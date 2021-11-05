@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <string>
+#include <fstream>
 
 using namespace std;
 // This is the main menu for the program
@@ -11,10 +12,19 @@ using namespace std;
     string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
     string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
     string DelColumnid,Delconfirmation;
-
+//Table MaxRow
+const int maxrow= 10;
+//Table Flight Record
+int storeColumnId [maxrow] = {};
+string storeFlightNo [maxrow] = {};
+string storeFlightName [maxrow] = {};
+string storeFlightFrom [maxrow] = {};
+string storeFlightDestination [maxrow] = {};
+string storeFlightTime [maxrow] = {};
+string storeFlightAmount [maxrow] = {};
 
      // Store Variables
-    string storeColumnId = "";
+    int storeColumnId = "";
     string storeFlightNo = "";
     string storeFlightName = "";
     string storeFlightFrom = "";
@@ -105,16 +115,22 @@ void showBookFlights()
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
 }
 void FlightRecord(){
+    int counter =0;
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
     cout<<setw(80)<<"| Column ID | Flight No. | Flight Name | From | Destination | Time |"<<endl;
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
-    cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
+    for (int x=0; x<maxrow;x++){
+        if(storeColumnId[x] != 0)
+        {
+            counter++;
+           cout<<setw(80)<<"|"<<counter<<"|"<< storeColumnId[x]<<"|"<<storeFlightNo[x]<<"|"<<storeFlightName<<"|"<<storeFlightFrom[x]<<"|"<<storeFlightDestination[x]<<"|"<<storeFlightTime[x]<<"|"<< endl;  
+        }
+    }
+    if (counter==0)
+    {
+        cout<<"No Record Found!"<<endl;
+    }
+   cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
 }
 void AddNewFlight(){
      //Add Flight
@@ -153,7 +169,7 @@ void AddNewFlight(){
 
 }
 void EditFlight(){
- system("cls");
+             system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Edit Flight Record"<<endl;
             //Edit Flight
@@ -318,19 +334,25 @@ int main()
         showAdminMenu();
         cout << setw(65) << "Enter your choice here: ";
         cin >> user_decision;
-        if(user_decision==1)
+        if(user_decision==1){
+
+            //DisplayFlight();
+        }
+        else if (user_decision==2)
+        {
+             system("cls");
+           showFlightDetailsMenu();
+            if(user_decision==1)
         {
           AddNewFlight();
         }
         else if (user_decision==2)
         {
            DeleteFlight();
-
         }
         else if (user_decision==3)
         {
            EditFlight();
-
 
         }
         else if (user_decision==4)
@@ -338,6 +360,12 @@ int main()
             FlightLeaveArrive();
 
         }
+        else{
+            //Invalid choice, Exit Program.
+        }
+        }
+        
+    
 
     }
 
