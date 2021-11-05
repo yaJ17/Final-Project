@@ -6,9 +6,9 @@
 
 using namespace std;
 // This is the main menu for the program
-    int user_decision;
+    int user_decision, FlightPrice, TicketCount;
     char Choice,delchoice,ChoiceEdit,LAchoice;
-    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
+    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom, FlightClass;
     string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
     string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
     string DelColumnid,Delconfirmation;
@@ -104,14 +104,14 @@ void showBookFlights()
     cout << setw(105) << "|----------------------------------------------------------------------------------------------|" << endl;
     cout << setw(105) << "| Flight Destination | Flight No.  | Flight Name  | Time   | Class        |Price               |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
-    cout << setw(105) << "|  South Korea       |   001       |  SK001       | 0700h   | Economy      |  31,000 Php       |" << endl;
-    cout << setw(105) << "|                    |   002       |  SK002       | 1300h   | Premium Eco. |  39,000 Php       |" << endl;
+    cout << setw(105) << "|  South Korea    [1]|   001       |  SK001       | 0700h   | Economy      |  31,000 Php       |" << endl;
+    cout << setw(105) << "|                 [2]|   002       |  SK002       | 1300h   | Premium Eco. |  39,000 Php       |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
-    cout << setw(105) << "|  Hongkong          |   003       |  HK001       | 0900h   | Economy      |  23,000 Php       |" << endl;
-    cout << setw(105) << "|                    |   004       |  HK002       | 1500h   | Premium Eco. |  31,000 Php       |" << endl;
+    cout << setw(105) << "|  Hongkong       [3]|   003       |  HK003       | 0900h   | Economy      |  23,000 Php       |" << endl;
+    cout << setw(105) << "|                 [4]|   004       |  HK004       | 1500h   | Premium Eco. |  31,000 Php       |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
-    cout << setw(105) << "|  Japan             |   005       |  JP001       | 1000h   | Economy      |  32,000 Php       |" << endl;
-    cout << setw(105) << "|                    |   006       |  JP002       | 1800h   | Premium Eco. |  40,000 Php       |" << endl;
+    cout << setw(105) << "|  Japan          [5]|   005       |  JP005       | 1000h   | Economy      |  32,000 Php       |" << endl;
+    cout << setw(105) << "|                 [6]|   006       |  JP006       | 1800h   | Premium Eco. |  40,000 Php       |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
 }
 void FlightRecord(){
@@ -285,13 +285,34 @@ void FlightLeaveArrive(){
                     FlightLeaveArrive();
                 }
 }
+void printFlightDetails()
+{
+        cout << "Destination: " << Destination << endl;
+        cout << "Flight Number: " << FlightNum << endl;
+        cout << "Flight Name: " << FlightName << endl;
+        cout << "Flight Time: " << FlightTime << endl;
+        cout << "Flight Class: " << FlightClass << endl;
+        cout << "Flight Price: " << FlightPrice << endl;
+        cout << "how many tickets you would like to buy? ";
+        cin >> TicketCount;
+        cout << "That would be " << TicketCount * FlightPrice << " total" << endl;
+}
+void printCheckFlightDetails()
+{
+    cout << "Destination: " << Destination << endl;
+    cout << "Flight Number: " << FlightNum << endl;
+    cout << "Flight Name: " << FlightName << endl;
+    cout << "Flight Time: " << FlightTime << endl;
+    cout << "Flight Class: " << FlightClass << endl;
+    cout << "Total Ticket Price: " << FlightPrice *TicketCount << endl;
+}
 int main()
 {
 
     showMenu();
     cout << setw(65) << "Enter your choice here: ";
     cin >> user_decision;
-    // Decision making for User input
+    // CUSTOMER SIDE
     if (user_decision == 1)
     {
         system("cls");
@@ -301,12 +322,76 @@ int main()
         //Book Flight
         if (user_decision ==1)
         {
+            system("cls");
             showBookFlights();
+            cout << setw(65) << "Enter your choice here: (Example Input '1')";
+            cin >> user_decision;
+                if (user_decision == 1)
+                {
+                    Destination = "South Korea";
+                    FlightNum = "001";
+                    FlightName = "SK001";
+                    FlightTime = "0700h" ;
+                    FlightClass = "Economy";
+                    FlightPrice = 31000;
+                    printFlightDetails();
+                }
+                else if (user_decision == 2)
+                {
+                    Destination = "South Korea";
+                    FlightNum = "002";
+                    FlightName = "SK02";
+                    FlightTime = "1300h" ;
+                    FlightClass = "Premium Economy";
+                    FlightPrice = 39000;
+                    printFlightDetails();
+                }
+                else if (user_decision == 3)
+                {
+                    Destination = "Hongkong";
+                    FlightNum = "003";
+                    FlightName = "HK003";
+                    FlightTime = "0900h" ;
+                    FlightClass = "Economy";
+                    FlightPrice = 23000;
+                    printFlightDetails();
+                }
+                else if (user_decision == 4)
+                {
+                    Destination = "Hongkong";
+                    FlightNum = "004";
+                    FlightName = "HK004";
+                    FlightTime = "1500h" ;
+                    FlightClass = "Premium Economy";
+                    FlightPrice = 31000;
+                    printFlightDetails();
+                }
+                else if (user_decision == 5)
+                {
+                    Destination = "Japan";
+                    FlightNum = "005";
+                    FlightName = "JP005";
+                    FlightTime = "1000h" ;
+                    FlightClass = "Economy";
+                    FlightPrice = 32000;
+                    printFlightDetails;
+                }
+                else if (user_decision == 6)
+                {
+                    Destination = "Japan";
+                    FlightNum = "006";
+                    FlightName = "JP006";
+                    FlightTime = "1800h" ;
+                    FlightClass = "Premium Economy";
+                    FlightPrice = 40000;
+                    printFlightDetails();
+                }
         }
         // Check Flight Details
         else if (user_decision == 2)
         {
-            cout << "2";
+            system("cls");
+            printCheckFlightDetails();
         }
         //Cancel Flight
         else if(user_decision == 3)
@@ -327,6 +412,7 @@ int main()
             main();
         }
     }
+    // ADMIN SIDE
     else if(user_decision == 2)
     {
 
