@@ -92,18 +92,17 @@ void showFlightDetailsMenu()
 void showBookFlights()
 {
     cout << setw(105) << "|----------------------------------------------------------------------------------------------|" << endl;
-    cout << setw(105) << "| FLIGHT DESTINATION          |                                                                        |" << endl;
+    cout << setw(105) << "| Flight Destination | Flight No.  | Flight Name  | Time   | Class        |Price               |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
-    cout << setw(105) << "|  [1]Incheon, South Korea                                                                                            |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
+    cout << setw(105) << "|  South Korea       |   001       |  SK001       | 0700h   | Economy      |  31,000 Php       |" << endl;
+    cout << setw(105) << "|                    |   002       |  SK002       | 1300h   | Premium Eco. |  39,000 Php       |" << endl;
     cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|                                                                                              |" << endl;
-    cout << setw(105) << "|----------------------------------------------------------------------------------------------|" << endl;
+    cout << setw(105) << "|  Hongkong          |   003       |  HK001       | 0900h   | Economy      |  23,000 Php       |" << endl;
+    cout << setw(105) << "|                    |   004       |  HK002       | 1500h   | Premium Eco. |  31,000 Php       |" << endl;
+    cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
+    cout << setw(105) << "|  Japan             |   005       |  JP001       | 1000h   | Economy      |  32,000 Php       |" << endl;
+    cout << setw(105) << "|                    |   006       |  JP002       | 1800h   | Premium Eco. |  40,000 Php       |" << endl;
+    cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
 }
 void FlightRecord(){
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
