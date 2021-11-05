@@ -5,7 +5,7 @@
 // comment ni kristan
 using namespace std;
 // This is the main menu for the program
-
+//clacla
 void showMenu()
 {
         cout << setw (70) << "*******************************" << endl;
@@ -98,12 +98,54 @@ void FlightRecord(){
     cout<<setw(80)<<"|           |            |             |      |             |      |"<<endl;
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
 }
+void AddNewFlight(){
+     //Add Flight
+            cout<<"Enter Flight No.: ";
+            getline(cin,FlightNum);
+            cout<<"Enter Flight Name: ";
+            getline(cin,FlightName);
+            cout<<"Enter Flight From: ";
+            getline(cin, FlightFrom);
+            cout<<"Enter Flight DEstination: ";
+            getline(cin,Destination);
+            cout<<"Enter Flight Time: ";
+            getline(cin, FlightTime);
+            cout<<"Enter Amount: ";
+            getline(cin,FlightAmount);
+            cout<<"Enter Flight Availability (A (Available)/ N (Not Available)): ";
+            getline(cin,FlightAvail);
+            cout<<"Successfully added in database."<<endl;
+            cout<<"Press 'M' to go back to Main Menu / 'A' to Insert Again (Press Any Key to Exit): ";
+            cin >> Choice;
+                if (Choice =='M'||Choice =='m'){
+                    //Return to Admin Main Menu
+                    cout << " m";
+                }
+                 else{
+                //Exit Program
+                cout << " exit";
+                }
+                while(Choice =='A'||Choice =='a'){
+                    //Add more Flight
+                    AddNewFlight();
+                }
+
+}
+void EditFlight(){
+
+}
+void DeleteFlight(){
+
+}
+void FlightLeaveArrive(){
+
+}
 int main()
 {
     int user_decision;
-    char Choice,delchoice,ChoiceEdit;
+    char Choice,delchoice,ChoiceEdit,LAchoice;
     string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
-    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount,ChoiceEdit;
+    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
     string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
     string DelColumnid,Delconfirmation,delchoice;
 
@@ -213,14 +255,15 @@ int main()
             cin>>Delconfirmation;
             cout<<"Successfully Deleted from Database."<<endl;
             cout<<"Press 'M' to go back to Main Menu / 'D' to Delete Another (Press Any Key to Exit): ";
-            if (Choice=='M'||Choice=='m'){
+            cin>>delchoice;
+            if (delchoice=='M'||delchoice=='m'){
                     //Return to Admin Main Menu
                     showFlightDetailsMenu();
                 }
                 else{
                     //Exit Program
                 }
-                while (Choice=='D'||Choice=='D'){
+                while (delchoice=='D'||delchoice=='D'){
                     //Delete More Flight
                 }
 
@@ -267,15 +310,15 @@ int main()
                 }
             cout<<"Successfully added in database."<<endl;
             cout<<"Press 'M' to go back to Main Menu / 'E' to Edit Another (Press Any Key to Exit): ";
-            getline(cin, ChoiceEdit);
-            if (Choice=='M'||Choice=='m'){
+            cin>>LAchoice;
+            if (LAchoice=='M'||LAchoice=='m'){
                     //Return to Admin Main Menu
                     showFlightDetailsMenu();
                 }
                  else{
                     //Exit Program
                 }
-                while(Choice=='E'||Choice=='e'){
+                while(LAchoice=='E'||LAchoice=='e'){
                     //Edit More Flight
                 }
 
