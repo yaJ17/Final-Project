@@ -275,7 +275,7 @@ int main()
     showMenu();
     cout << setw(65) << "Enter your choice here: ";
     cin >> user_decision;
-    // Decision making for User input
+    // CUSTOMER SIDE
     if (user_decision == 1)
     {
         system("cls");
@@ -311,6 +311,7 @@ int main()
             main();
         }
     }
+    // ADMIN SIDE
     else if(user_decision == 2)
     {
 
