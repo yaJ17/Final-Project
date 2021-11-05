@@ -6,6 +6,26 @@
 using namespace std;
 // This is the main menu for the program
 //clacla
+    int user_decision;
+    char Choice,delchoice,ChoiceEdit,LAchoice;
+    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
+    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
+    string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
+    string DelColumnid,Delconfirmation;
+
+    
+     // Store Variables
+    string storeColumnId = "";
+    string storeFlightNo = "";
+    string storeFlightName = "";
+    string storeFlightFrom = "";
+    string storeFlightDestination = "";
+    string storeFlightTime = "";
+    string storeFlightAmount = "";
+    string storeUserTripPlan2d[500][500];
+    int storeIndex1 = 0, storeIndex2 = 0;
+    // Variables End 
+
 void showMenu()
 {
         cout << setw (70) << "*******************************" << endl;
@@ -142,24 +162,7 @@ void FlightLeaveArrive(){
 }
 int main()
 {
-    int user_decision;
-    char Choice,delchoice,ChoiceEdit,LAchoice;
-    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
-    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
-    string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
-    string DelColumnid,Delconfirmation;
-    
-     // Store Variables
-    string storeColumnId = "";
-    string storeFlightNo = "";
-    string storeFlightName = "";
-    string storeFlightFrom = "";
-    string storeFlightDestination = "";
-    string storeFlightTime = "";
-    string storeFlightAmount = "";
-    string storeUserTripPlan2d[500][500];
-    int storeIndex1 = 0, storeIndex2 = 0;
-    // Variables End
+
     
     showMenu();
     cout << setw(65) << "Enter your choice here: ";
@@ -202,44 +205,7 @@ int main()
     }
     else if(user_decision == 2)
     {
-        system("cls");
-        showAdminMenu();
-        cout << setw(65) << "Enter your choice here: ";
-        cin >> user_decision;
-        if(user_decision==1)
-        {
-            //Add Flight
-            cout<<"Enter Flight No.: ";
-            getline(cin,FlightNum);
-            cout<<"Enter Flight Name: ";
-            getline(cin,FlightName);
-            cout<<"Enter Flight From: ";
-            getline(cin, FlightFrom);
-            cout<<"Enter Flight DEstination: ";
-            getline(cin,Destination);
-            cout<<"Enter Flight Time: ";
-            getline(cin, FlightTime);
-            cout<<"Enter Amount: ";
-            getline(cin,FlightAmount);
-            cout<<"Enter Flight Availability (A (Available)/ N (Not Available)): ";
-            getline(cin,FlightAvail);
-            cout<<"Successfully added in database."<<endl;
-            cout<<"Press 'M' to go back to Main Menu / 'A' to Insert Again (Press Any Key to Exit): ";
-            cin >> Choice;
-                if (Choice =='M'||Choice =='m'){
-                    //Return to Admin Main Menu
-                    cout << " m";
-                }
-                 else{
-                //Exit Program
-                cout << " exit";
-                }
-                while(Choice =='A'||Choice =='a'){
-                    //Add more Flight
-                    cout << "a";
-                }
-
-            
+        AddNewFlight();
         }
         else if (user_decision==2)
         {
