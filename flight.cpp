@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <string>
-// comment ni kristan
+
 using namespace std;
 // This is the main menu for the program
     int user_decision;
@@ -12,7 +12,7 @@ using namespace std;
     string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
     string DelColumnid,Delconfirmation;
 
-    
+
      // Store Variables
     string storeColumnId = "";
     string storeFlightNo = "";
@@ -23,7 +23,7 @@ using namespace std;
     string storeFlightAmount = "";
     string storeUserTripPlan2d[500][500];
     int storeIndex1 = 0, storeIndex2 = 0;
-    // Variables End 
+    // Variables End
 
 void showMenu()
 {
@@ -268,7 +268,7 @@ void FlightLeaveArrive(){
 
                 while(LAchoice=='E'|| LAchoice=='e'){
                     FlightLeaveArrive();
-                }   
+                }
 }
 int main()
 {
