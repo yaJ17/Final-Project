@@ -168,7 +168,8 @@ void AddNewFlight(){
                 }
 
 }
-void EditFlight(){
+void EditFlight(string search){
+    int counter;
              system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Edit Flight Record"<<endl;
@@ -177,6 +178,9 @@ void EditFlight(){
 
             cout<<"Enter Column ID you wish to change: ";
             getline(cin, ColumnId);
+                if (ColumnId == search){
+                    counter++;
+                
             cout<<"Enter Flight No. (X to not Change): ";
             getline(cin, Editflightno);
                 if (Editflightno=="X"){
@@ -206,6 +210,7 @@ void EditFlight(){
             getline(cin, Editamount);
             if (Editamount=="X"){
                     Editamount=storeFlightAmount;
+                }
                 }
             cout<<"Successfully added in database."<<endl;
             cout<<"Press 'M' to go back to Main Menu / 'E' to Edit Another (Press Any Key to Exit): ";
