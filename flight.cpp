@@ -5,7 +5,26 @@
 // comment ni kristan
 using namespace std;
 // This is the main menu for the program
-//clacla
+    int user_decision;
+    char Choice,delchoice,ChoiceEdit,LAchoice;
+    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
+    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
+    string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
+    string DelColumnid,Delconfirmation;
+
+    
+     // Store Variables
+    string storeColumnId = "";
+    string storeFlightNo = "";
+    string storeFlightName = "";
+    string storeFlightFrom = "";
+    string storeFlightDestination = "";
+    string storeFlightTime = "";
+    string storeFlightAmount = "";
+    string storeUserTripPlan2d[500][500];
+    int storeIndex1 = 0, storeIndex2 = 0;
+    // Variables End 
+
 void showMenu()
 {
         cout << setw (70) << "*******************************" << endl;
@@ -99,6 +118,9 @@ void FlightRecord(){
 }
 void AddNewFlight(){
      //Add Flight
+      cout<<"Welcome To T.I.P. Airlines"<< endl;
+            cout<<"Add Flight Record"<<endl;
+                FlightRecord();
             cout<<"Enter Flight No.: ";
             getline(cin,FlightNum);
             cout<<"Enter Flight Name: ";
@@ -118,7 +140,7 @@ void AddNewFlight(){
             cin >> Choice;
                 if (Choice =='M'||Choice =='m'){
                     //Return to Admin Main Menu
-                    cout << " m";
+                  showAdminMenu();
                 }
                  else{
                 //Exit Program
@@ -131,145 +153,7 @@ void AddNewFlight(){
 
 }
 void EditFlight(){
-
-}
-void DeleteFlight(){
-
-}
-void FlightLeaveArrive(){
-
-}
-int main()
-{
-    int user_decision;
-    char Choice,delchoice,ChoiceEdit,LAchoice;
-    string FlightNum,FlightName,Destination,FlightTime,FlightAmount,FlightAvail,FlightFrom;
-    string ColumnId,Editflightno,Editflightname,EditFlightFrom,EditDestination,Editflighttime,Editamount;
-    string FlightLeave,FlightArrive,FlightlaAvail,LAcolumnid;
-    string DelColumnid,Delconfirmation,delchoice;
-
-     // Store Variables
-    string storeColumnId = "";
-    string storeFlightNo = "";
-    string storeFlightName = "";
-    string storeFlightFrom = "";
-    string storeFlightDestination = "";
-    string storeFlightTime = "";
-    string storeFlightAmount = "";
-    string storeUserTripPlan2d[500][500];
-    int storeIndex1 = 0, storeIndex2 = 0;
-    // Variables End
-
-    showMenu();
-    cout << setw(65) << "Enter your choice here: ";
-    cin >> user_decision;
-    // Decision making for User input
-    if (user_decision == 1)
-    {
-        system("cls");
-        showCustomerMenu();
-        cout << setw(65) << "Enter your choice here: ";
-        cin >> user_decision;
-        //Book Flight
-        if (user_decision ==1)
-        {
-            showBookFlights();
-        }
-        // Check Flight Details
-        else if (user_decision == 2)
-        {
-            cout << "2";
-        }
-        //Cancel Flight
-        else if(user_decision == 3)
-        {
-            cout << "3";
-        }
-        // Exit
-        else if (user_decision == 4)
-        {
-            cout << "Thank you for using our service!" <<endl;
-            cout << "Have a nice day!" <<endl;
-            exit(0);
-        }
-        else
-        {
-            system("cls");
-            cout << setw(60) << "Invalid Input" << endl;
-            main();
-        }
-    }
-    else if(user_decision == 2)
-    {
-        system("cls");
-        showAdminMenu();
-        cout << setw(65) << "Enter your choice here: ";
-        cin >> user_decision;
-        if(user_decision==1)
-        {
-            //Add Flight
-            cout<<"Enter Flight No.: ";
-            getline(cin,FlightNum);
-            cout<<"Enter Flight Name: ";
-            getline(cin,FlightName);
-            cout<<"Enter Flight From: ";
-            getline(cin, FlightFrom);
-            cout<<"Enter Flight DEstination: ";
-            getline(cin,Destination);
-            cout<<"Enter Flight Time: ";
-            getline(cin, FlightTime);
-            cout<<"Enter Amount: ";
-            getline(cin,FlightAmount);
-            cout<<"Enter Flight Availability (A (Available)/ N (Not Available)): ";
-            getline(cin,FlightAvail);
-            cout<<"Successfully added in database."<<endl;
-            cout<<"Press 'M' to go back to Main Menu / 'A' to Insert Again (Press Any Key to Exit): ";
-            cin >> Choice;
-                if (Choice =='M'||Choice =='m'){
-                    //Return to Admin Main Menu
-                    cout << " m";
-                }
-                 else{
-                //Exit Program
-                cout << " exit";
-                }
-                while(Choice =='A'||Choice =='a'){
-                    //Add more Flight
-                    cout << "a";
-                }
-
-
-        }
-        else if (user_decision==2)
-        {
-            system("cls");
-            cout<<"Welcome To T.I.P. Airlines"<< endl;
-            cout<<"Delete Flight Record"<<endl;
-
-            //Delete Flight
-             FlightRecord();
-            cout<<"Enter A Column ID you wish to delete: ";
-            cin>>DelColumnid;
-            cout<<"Are you sure? It will delete this record Y/N.: ";
-            cin>>Delconfirmation;
-            cout<<"Successfully Deleted from Database."<<endl;
-            cout<<"Press 'M' to go back to Main Menu / 'D' to Delete Another (Press Any Key to Exit): ";
-            cin>>delchoice;
-            if (delchoice=='M'||delchoice=='m'){
-                    //Return to Admin Main Menu
-                    showFlightDetailsMenu();
-                }
-                else{
-                    //Exit Program
-                }
-                while (delchoice=='D'||delchoice=='D'){
-                    //Delete More Flight
-                }
-
-        }
-        else if (user_decision==3)
-        {
-            system("cls");
+ system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Edit Flight Record"<<endl;
             //Edit Flight
@@ -312,19 +196,43 @@ int main()
             cin>>LAchoice;
             if (LAchoice=='M'||LAchoice=='m'){
                     //Return to Admin Main Menu
-                    showFlightDetailsMenu();
+                    showAdminMenu();
                 }
                  else{
                     //Exit Program
+                     cout << " exit";
                 }
                 while(LAchoice=='E'||LAchoice=='e'){
-                    //Edit More Flight
+                    EditFlight();
                 }
+}
+void DeleteFlight(){
+            system("cls");
+            cout<<"Welcome To T.I.P. Airlines"<< endl;
+            cout<<"Delete Flight Record"<<endl;
 
-
-        }
-        else if (user_decision==4)
-        {
+            //Delete Flight
+             FlightRecord();
+            cout<<"Enter A Column ID you wish to delete: ";
+            cin>>DelColumnid;
+            cout<<"Are you sure? It will delete this record Y/N.: ";
+            cin>>Delconfirmation;
+            cout<<"Successfully Deleted from Database."<<endl;
+            cout<<"Press 'M' to go back to Main Menu / 'D' to Delete Another (Press Any Key to Exit): ";
+            cin>>delchoice;
+            if (delchoice=='M'||delchoice=='m'){
+                    //Return to Admin Main Menu
+                    showAdminMenu();
+                }
+                else{
+                    //Exit Program
+                     cout << " exit";
+                }
+                while (delchoice=='D'||delchoice=='D'){
+                    DeleteFlight();
+                }
+}
+void FlightLeaveArrive(){
             system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Leave and Arrive Flight Record"<<endl;
@@ -347,19 +255,87 @@ int main()
             getline(cin,FlightlaAvail);
             cout<<"Successfully Saved in Database.";
              cout<<"Press 'M' to go back to Main Menu / 'E' to Edit Another (Press Any Key to Exit): ";
-            cin>>ChoiceEdit;
-            if (Choice=='M'||Choice=='m'){
+            cin>>LAchoice;
+            if (LAchoice=='M'||LAchoice=='m'){
                     //Return to Admin Main Menu
-                    showFlightDetailsMenu();
+                     showAdminMenu();
                 }
                  else{
                     //Exit Program
+                     cout << " exit";
                 }
 
-                while(Choice=='E'|| Choice=='e'){
-                    //Edit More Flight Leave And Arrive
-                }
+                while(LAchoice=='E'|| LAchoice=='e'){
+                    FlightLeaveArrive();
+                }   
+}
+int main()
+{
 
+    showMenu();
+    cout << setw(65) << "Enter your choice here: ";
+    cin >> user_decision;
+    // Decision making for User input
+    if (user_decision == 1)
+    {
+        system("cls");
+        showCustomerMenu();
+        cout << setw(65) << "Enter your choice here: ";
+        cin >> user_decision;
+        //Book Flight
+        if (user_decision ==1)
+        {
+            showBookFlights();
+        }
+        // Check Flight Details
+        else if (user_decision == 2)
+        {
+            cout << "2";
+        }
+        //Cancel Flight
+        else if(user_decision == 3)
+        {
+            cout << "3";
+        }
+        // Exit
+        else if (user_decision == 4)
+        {
+            cout << "Thank you for using our service!" <<endl;
+            cout << "Have a nice day!" <<endl;
+            exit(0);
+        }
+        else
+        {
+            system("cls");
+            cout << setw(60) << "Invalid Input" << endl;
+            main();
+        }
+    }
+    else if(user_decision == 2)
+    {
+
+        system("cls");
+        showAdminMenu();
+        cout << setw(65) << "Enter your choice here: ";
+        cin >> user_decision;
+        if(user_decision==1)
+        {
+          AddNewFlight();
+        }
+        else if (user_decision==2)
+        {
+           DeleteFlight();
+
+        }
+        else if (user_decision==3)
+        {
+           EditFlight();
+
+
+        }
+        else if (user_decision==4)
+        {
+            FlightLeaveArrive();
 
         }
 
