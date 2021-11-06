@@ -113,9 +113,10 @@ void FlightRecord(){
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
     cout<<setw(80)<<"| Column ID | Flight No. | Flight Name | From | Destination | Time |"<<endl;
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
-   
+}
 void showAddNewFlight(){
      //Add Flight
+      system("cls");
       cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Add Flight Record"<<endl;
                 FlightRecord();
@@ -425,7 +426,7 @@ int main()
         }
         else if (user_decision==3)
         {
-           showEditFlight();
+           showEditFlight(ColumnId);
 
         }
         else if (user_decision==4)
