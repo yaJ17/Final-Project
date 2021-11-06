@@ -14,23 +14,17 @@ using namespace std;
     string DelColumnid,Delconfirmation;
 //Table MaxRow
 const int maxrow= 10;
-//Table Flight Record
-int storeColumnId [maxrow] = {};
-string storeFlightNo [maxrow] = {};
-string storeFlightName [maxrow] = {};
-string storeFlightFrom [maxrow] = {};
-string storeFlightDestination [maxrow] = {};
-string storeFlightTime [maxrow] = {};
-string storeFlightAmount [maxrow] = {};
+
+
 
      // Store Variables
-    int storeColumnId = "";
-    string storeFlightNo = "";
-    string storeFlightName = "";
-    string storeFlightFrom = "";
-    string storeFlightDestination = "";
-    string storeFlightTime = "";
-    string storeFlightAmount = "";
+    string storeColumnId = " ";
+    string storeFlightNo = " ";
+    string storeFlightName = " ";
+    string storeFlightFrom = " ";
+    string storeFlightDestination = " ";
+    string storeFlightTime = " ";
+    string storeFlightAmount = " ";
     string storeUserTripPlan2d[500][500];
     int storeIndex1 = 0, storeIndex2 = 0;
     // Variables End
@@ -119,20 +113,8 @@ void FlightRecord(){
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
     cout<<setw(80)<<"| Column ID | Flight No. | Flight Name | From | Destination | Time |"<<endl;
     cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
-    for (int x=0; x<maxrow;x++){
-        if(storeColumnId[x] != 0)
-        {
-            counter++;
-           cout<<setw(80)<<"|"<<counter<<"|"<< storeColumnId[x]<<"|"<<storeFlightNo[x]<<"|"<<storeFlightName<<"|"<<storeFlightFrom[x]<<"|"<<storeFlightDestination[x]<<"|"<<storeFlightTime[x]<<"|"<< endl;  
-        }
-    }
-    if (counter==0)
-    {
-        cout<<"No Record Found!"<<endl;
-    }
-   cout<<setw(80)<<"|------------------------------------------------------------------|"<<endl;
-}
-void AddNewFlight(){
+   
+void showAddNewFlight(){
      //Add Flight
       cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Add Flight Record"<<endl;
@@ -164,11 +146,11 @@ void AddNewFlight(){
                 }
                 while(Choice =='A'||Choice =='a'){
                     //Add more Flight
-                    AddNewFlight();
+                    showAddNewFlight();
                 }
 
 }
-void EditFlight(string search){
+void showEditFlight(string search){
     int counter;
              system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
@@ -224,10 +206,10 @@ void EditFlight(string search){
                      cout << " exit";
                 }
                 while(LAchoice=='E'||LAchoice=='e'){
-                    EditFlight();
+                    showEditFlight(search);
                 }
 }
-void DeleteFlight(){
+void showDeleteFlight(){
             system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Delete Flight Record"<<endl;
@@ -250,10 +232,10 @@ void DeleteFlight(){
                      cout << " exit";
                 }
                 while (delchoice=='D'||delchoice=='D'){
-                    DeleteFlight();
+                    showDeleteFlight();
                 }
 }
-void FlightLeaveArrive(){
+void showFlightLeaveArrive(){
             system("cls");
             cout<<"Welcome To T.I.P. Airlines"<< endl;
             cout<<"Leave and Arrive Flight Record"<<endl;
@@ -287,7 +269,7 @@ void FlightLeaveArrive(){
                 }
 
                 while(LAchoice=='E'|| LAchoice=='e'){
-                    FlightLeaveArrive();
+                    showFlightLeaveArrive();
                 }
 }
 void printFlightDetails()
@@ -435,20 +417,20 @@ int main()
            showFlightDetailsMenu();
             if(user_decision==1)
         {
-          AddNewFlight();
+          showAddNewFlight();
         }
         else if (user_decision==2)
         {
-           DeleteFlight();
+           showDeleteFlight();
         }
         else if (user_decision==3)
         {
-           EditFlight();
+           showEditFlight();
 
         }
         else if (user_decision==4)
         {
-            FlightLeaveArrive();
+            showFlightLeaveArrive();
 
         }
         else{
