@@ -371,14 +371,18 @@ int main()
 		{
 			system("cls");
 			showFlightDetailsMenu();
-			switch (user_decision) {
-			case 1:ShowAddNewFlight(write);
-				break;
-			case 2: showDeleteFlight(ColumnId, read);
-				break;
-			case 3: showEditFlight(ColumnId, read);
-				break;
-			default:
+			cout << setw(65) << "Enter your choice here: (Example Input '1')";
+			cin >> user_decision;
+			if (user_decision==1){
+                ShowAddNewFlight(write);
+			}
+			else if (user_decision==2){
+                showDeleteFlight(ColumnId, read);
+			}
+			else if (user_decision==3){
+                showEditFlight(ColumnId, read);
+			}
+			else {
                 cout<< "Invalid choice.";
 			}
 		}
