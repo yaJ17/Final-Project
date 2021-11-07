@@ -388,6 +388,7 @@ int main()
             {
 
                 //DisplayFlight();
+                //notyetdone
             }
             else if (user_decision == 2)
             {
