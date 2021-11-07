@@ -339,7 +339,7 @@ int main()
 		if (user_decision == 1)
 		{
 			DisplayFlightRecord(f);
-		}
+		} //lala
 		else if (user_decision == 2)
 		{
 			system("cls");
