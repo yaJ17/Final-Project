@@ -6,14 +6,13 @@
 
 using namespace std;
 // This is the main menu for the program
-int user_decision, FlightPrice, TicketCount, ColumnId;
+int user_decision,FlightPrice, TicketCount, ColumnId, FlightAmount;
 char Choice;
-string FlightNum, FlightName, Destination, FlightTime, FlightAmount, FlightAvail, FlightFrom, FlightClass;
+string FlightNum, FlightName, Destination, FlightTime, FlightAvail, FlightFrom, FlightClass;
 struct Flight
 {
-    int ColumnId;
-    string FlightNum, FlightName, Destination, FlightTime,
-        FlightAmount, FlightAvail, FlightFrom, FlightClass;
+    int ColumnId,FlightAmount;
+    string FlightNum, FlightName, Destination, FlightTime, FlightAvail, FlightFrom, FlightClass;
     char Choice;
 };
 void showMenu()
@@ -115,8 +114,7 @@ void ShowAddNewFlight(ofstream &write)
     cin.get();
     getline(cin, f1.FlightTime);
     cout << "Enter Amount: ";
-    cin.get();
-    getline(cin, f1.FlightAmount);
+    cin>> f1.FlightAmount
     cout << "Enter Flight Availability (A (Available)/ N (Not Available)): ";
     cin.get();
     getline(cin, f1.FlightAvail);
@@ -153,13 +151,21 @@ Flight flightgetdata(ifstream &read)
     getline(cin, obj.FlightClass);
     return obj;
 }
+void DisplayCustomerChoice(Flight f){
+            cout<<"Destination: "<<f.Destination<<endl;
+            cout<<"Flight Number: "<<f.FlightNum<<endl;
+            cout<<"Flight Name: "<<f.FlightName<<endl;
+            cout<<"Flight Time: "<<f.FlightTime<<endl;
+            cout<<"Flight Class: "<<f.FlightClass<<endl;
+            cout<<"Flight Price:"<<f.FlightAmount<<endl;
+}
 void DisplayFlightRecord(Flight f)
 {
-    cout << "|----------------------------------------------------------------------------|" << endl;
-    cout << "| Column ID | Flight No. | Flight Name | From | Destination |  Class  | Time |" << endl;
-    cout << "|----------------------------------------------------------------------------|" << endl;
-    cout << f.ColumnId << f.FlightNum << f.FlightName << f.FlightFrom << f.Destination << f.FlightClass << f.FlightTime << endl;
-    cout << "|----------------------------------------------------------------------------|" << endl;
+    cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
+    cout << "| Column ID | Flight No. | Flight Name | From | Destination |  Class  | Time | Price | Flight Availabity |" << endl;
+    cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
+    cout << f.ColumnId << f.FlightNum << f.FlightName << f.FlightFrom << f.Destination << f.FlightClass << f.FlightTime << endl << f.FlightAmount;
+    cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
 }
 void showDeleteFlight(int ColumnId, ifstream &read)
 {
@@ -292,64 +298,9 @@ int main()
                 cin >> user_decision;
                 if (user_decision == 1)
                 {
-                    Destination = "South Korea";
-                    FlightNum = "001";
-                    FlightName = "SK001";
-                    FlightTime = "0700h";
-                    FlightClass = "Economy";
-                    FlightPrice = 31000;
-                    printFlightDetails();
+                    DisplayCustomerChoice(Flight f);
                 }
-                else if (user_decision == 2)
-                {
-                    Destination = "South Korea";
-                    FlightNum = "002";
-                    FlightName = "SK02";
-                    FlightTime = "1300h";
-                    FlightClass = "Premium Economy";
-                    FlightPrice = 39000;
-                    printFlightDetails();
-                }
-                else if (user_decision == 3)
-                {
-                    Destination = "Hongkong";
-                    FlightNum = "003";
-                    FlightName = "HK003";
-                    FlightTime = "0900h";
-                    FlightClass = "Economy";
-                    FlightPrice = 23000;
-                    printFlightDetails();
-                }
-                else if (user_decision == 4)
-                {
-                    Destination = "Hongkong";
-                    FlightNum = "004";
-                    FlightName = "HK004";
-                    FlightTime = "1500h";
-                    FlightClass = "Premium Economy";
-                    FlightPrice = 31000;
-                    printFlightDetails();
-                }
-                else if (user_decision == 5)
-                {
-                    Destination = "Japan";
-                    FlightNum = "005";
-                    FlightName = "JP005";
-                    FlightTime = "1000h";
-                    FlightClass = "Economy";
-                    FlightPrice = 32000;
-                    printFlightDetails;
-                }
-                else if (user_decision == 6)
-                {
-                    Destination = "Japan";
-                    FlightNum = "006";
-                    FlightName = "JP006";
-                    FlightTime = "1800h";
-                    FlightClass = "Premium Economy";
-                    FlightPrice = 40000;
-                    printFlightDetails();
-                }
+            
             }
             // Check Flight Details
             else if (user_decision == 2)
@@ -386,9 +337,7 @@ int main()
             cin >> user_decision;
             if (user_decision == 1)
             {
-
-                //DisplayFlight();
-                //notyetdone
+               DisplayFlightRecord(Flight f);
             }
             else if (user_decision == 2)
             {
