@@ -71,8 +71,7 @@ void showFlightDetailsMenu()
 	cout << setw(70) << "|       [1] Add Flight                |" << endl;
 	cout << setw(70) << "|       [2] Delete Flight             |" << endl;
 	cout << setw(70) << "|       [3] Edit Flight               |" << endl;
-	cout << setw(70) << "|       [4] Flight Leave and Arrive   |" << endl;
-	cout << setw(70) << "|       [5] Back To Main Menu         |" << endl;
+	cout << setw(70) << "|       [4] Back To Main Menu         |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|-------------------------------------|" << endl;
@@ -249,7 +248,9 @@ void printCheckFlightDetails()
 }
 int main()
 {
-
+	int ColumnId = 0;
+	ifstream read;
+	ofstream write;
 	showMenu();
 	cout << setw(65) << "Enter your choice here: ";
 	cin >> user_decision;
@@ -370,32 +371,25 @@ int main()
 		{
 			system("cls");
 			showFlightDetailsMenu();
-			if (user_decision == 1)
-			{
-				ShowAddNewFlight();
-			}
-			else if (user_decision == 2)
-			{
-				showDeleteFlight();
-			}
-			else if (user_decision == 3)
-			{
-				showEditFlight();
-			}
-			else
-			{
-				//Invalid choice, Exit Program.
+			switch (user_decision) {
+			case 1:ShowAddNewFlight(write);
+				break;
+			case 2: showDeleteFlight(ColumnId, read);
+				break;
+			case 3: showEditFlight(ColumnId, read);
+				break;
+			default:
 			}
 		}
-	}
 
-	else
-	{
-		cout << "Invalid Input" << endl;
-		cout << "Try again . . ." << endl;
-		exit(0);
+		else
+		{
+			cout << "Invalid Input" << endl;
+			cout << "Try again . . ." << endl;
+			exit(0);
+		}
+		system("pause");
+		system("cls");
+		main();
 	}
-	system("pause");
-	system("cls");
-	main();
 }
