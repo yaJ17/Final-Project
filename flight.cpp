@@ -379,6 +379,7 @@ int main()
 			case 3: showEditFlight(ColumnId, read);
 				break;
 			default:
+                cout<< "Invalid choice.";
 			}
 		}
 
