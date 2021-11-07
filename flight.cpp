@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
+#include <conio.h>
 
 using namespace std;
 // This is the main menu for the program
@@ -163,7 +164,7 @@ void showEditFlight(string search){
             getline(cin, ColumnId);
                 if (ColumnId == search){
                     counter++;
-                
+
             cout<<"Enter Flight No. (X to not Change): ";
             getline(cin, Editflightno);
                 if (Editflightno=="X"){
@@ -405,41 +406,56 @@ int main()
     {
 
         system("cls");
-        showAdminMenu();
-        cout << setw(65) << "Enter your choice here: ";
-        cin >> user_decision;
-        if(user_decision==1){
+        string password = "";
+        string username = "";
+        cout << setw(60) << "Login Admin Account" << endl;
+        cout << setw(55) << "Username: ";
+        cin >> username;
+        cout << endl;
+        cout << setw(55) << "Password: ";
+        cin >> password;
+        if (username == "admin" && password == "admin")
+        {
+            system("cls");
+            cout << setw(55) << "Log in sucessful" << endl << endl << endl;
+            showAdminMenu();
+            cout << setw(65) << "Enter your choice here: ";
+            cin >> user_decision;
+                if(user_decision==1){
 
-            //DisplayFlight();
-        }
-        else if (user_decision==2)
-        {
-             system("cls");
-           showFlightDetailsMenu();
-            if(user_decision==1)
-        {
-          showAddNewFlight();
-        }
-        else if (user_decision==2)
-        {
-           showDeleteFlight();
-        }
-        else if (user_decision==3)
-        {
-           showEditFlight(ColumnId);
+                    //DisplayFlight();
+                }
+                else if (user_decision==2)
+                {
+                     system("cls");
+                       showFlightDetailsMenu();
+                        if(user_decision==1)
+                    {
+                      showAddNewFlight();
+                    }
+                    else if (user_decision==2)
+                    {
+                       showDeleteFlight();
+                    }
+                    else if (user_decision==3)
+                    {
+                       showEditFlight(ColumnId);
 
-        }
-        else if (user_decision==4)
-        {
-            showFlightLeaveArrive();
+                    }
+                    else if (user_decision==4)
+                    {
+                        showFlightLeaveArrive();
 
+                    }
+                    else{
+                        //Invalid choice, Exit Program.
+                    }
+                }
         }
-        else{
-            //Invalid choice, Exit Program.
+        else
+        {
+            cout << setw(58)<< "Invalid Input" << endl;
         }
-        }
-        
-    
 
     }
 
