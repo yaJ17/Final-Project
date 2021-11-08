@@ -12,9 +12,14 @@ string FlightNum, FlightName, Destination, FlightFrom, FlightClass;
 
 struct Flight
 {
-	int ColumnId{}, FlightAmount{};
-	string FlightNum, FlightName, Destination, FlightFrom, FlightTime, FlightClass;
-	
+	int ColumnId;
+	int FlightAmount;
+	string FlightNum;
+	string FlightName;
+	string Destination;
+	string FlightFrom;
+	string FlightTime;
+	string FlightClass;
 };
 void showMenu()
 {
@@ -129,14 +134,9 @@ void ShowAddNewFlight(ofstream& write)
 	cin >> f1.FlightAmount;
 
 	cout << "Successfully added in database." << endl;
-	write << f1.ColumnId << endl
-		<< f1.FlightNum << endl
-		<< f1.FlightName << endl
-		<< f1.FlightFrom << endl
-		<< f1.Destination << endl
-		<< f1.FlightClass << endl
-		<< f1.FlightTime << endl
-		<< f1.FlightAmount << endl;
+	write << f1.ColumnId << endl;
+	write<< f1.FlightNum << endl<< f1.FlightName << endl<< f1.FlightFrom << endl<< f1.Destination << endl<< f1.FlightClass << endl;
+	write << f1.FlightTime << endl << f1.FlightAmount << endl<< endl;
 
 	cout << "Add another Flight? Y if yes / N if no: ";
 	cin >> Choice;
@@ -150,7 +150,7 @@ void ShowAddNewFlight(ofstream& write)
 		cout << "Invalid Choice";
 	}
 }
-Flight flightgetdata(ifstream& read)
+Flight flightgetdata(ifstream &read)
 {
 	Flight obj;
 	read >> obj.ColumnId;
