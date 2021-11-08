@@ -349,57 +349,53 @@ int main()
 		if (username == "admin" && password == "admin")
 		{
 			system("cls");
-			cout << setw(55) << "Log in sucessful" << endl
-				<< endl
-				<< endl;
-		}
-		else {
-			cout << "Invalid Username and Password" << endl << endl << endl;
-		}
-		//--------------------------------------------------
-		system("cls");
+			cout << setw(55) << "Log in sucessful" << endl << endl<< endl;
 		showAdminMenu();
 		cout << setw(65) << "Enter your choice here: ";
 		cin >> user_decision;
-		if (user_decision == 1)
-		{
-			ifstream read;
-			read.open("record.txt", ios::in);
-			Flight f1;
-			f1 = flightgetdata(read);
-			while (!read.eof()) {
-				DisplayFlightRecord(f1);
-				f1 = flightgetdata(read);
-			}
+            if (user_decision == 1)
+            {
+                ifstream read;
+                read.open("record.txt", ios::in);
+                Flight f1;
+                f1 = flightgetdata(read);
+                while (!read.eof()) {
+                    DisplayFlightRecord(f1);
+                    f1 = flightgetdata(read);
+                }
+            }
+            else if (user_decision == 2)
+            {
+                system("cls");
+                showFlightDetailsMenu();
+                cout << setw(65) << "Enter your choice here: ";
+                cin >> user_decision;
+                if (user_decision == 1)
+                {
+                    ShowAddNewFlight(write);
+                }
+                else if (user_decision == 2)
+                {
+                    showDeleteFlight(ColumnId, read);
+                }
+                else if (user_decision == 3)
+                {
+                    showEditFlight(ColumnId, read);
+                }
+                else if (user_decision == 4)
+                {
+                    showAdminMenu();
+                }
+                else
+                {
+                    cout << "Invalid Choice...";
+                }
+            }
+        else
+        {
+            cout << "Invalid Username and Password" << endl;
+        }
 		}
-		else if (user_decision == 2)
-		{
-			system("cls");
-			showFlightDetailsMenu();
-			cout << setw(65) << "Enter your choice here: ";
-			cin >> user_decision;
-			if (user_decision == 1)
-			{
-				ShowAddNewFlight(write);
-			}
-			else if (user_decision == 2)
-			{
-				showDeleteFlight(ColumnId, read);
-			}
-			else if (user_decision == 3)
-			{
-				showEditFlight(ColumnId, read);
-			}
-			else if (user_decision == 4)
-			{
-				showAdminMenu();
-			}
-			else
-			{
-				cout << "Invalid Choice...";
-			}
-		}
-
 		else
 		{
 			cout << "Invalid Input" << endl;
