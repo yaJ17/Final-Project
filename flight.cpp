@@ -60,7 +60,7 @@ void showAdminMenu()
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
-	cout << setw(70) << "|       [1] Search Flight Record     |" << endl;
+	cout << setw(70) << "|       [1] Search Flight Record      |" << endl;
 	cout << setw(70) << "|       [2] Flight Details            |" << endl;
 	cout << setw(70) << "|       [3] Exit                      |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
@@ -416,14 +416,7 @@ int main()
 		if (username == "admin" && password == "admin")
 		{
 			system("cls");
-			cout << setw(55) << "Log in sucessful" << endl
-				<< endl
-				<< endl;
-		}
-		else {
-			cout << "Invalid Username and Password" << endl << endl << endl;
-		}
-		//--------------------------------------------------
+			cout << setw(55) << "Log in sucessful" << endl<< endl << endl;
 		system("cls");
 			if (user_decision == 2)
 			{
@@ -461,6 +454,14 @@ int main()
 					}
 				}
 			}
+		}
+		else
+        {
+            cout << "Invalid Input . . ." << endl;
+            system("pause");
+            system("cls");
+            main();
+        }
 	}
 	else
 	{
@@ -471,7 +472,7 @@ int main()
 	system("pause");
 	system("cls");
 	return 0;
-	
+
 }
 
 
