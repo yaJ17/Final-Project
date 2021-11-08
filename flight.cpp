@@ -6,14 +6,15 @@
 
 using namespace std;
 // This is the main menu for the program
-int user_decision, FlightPrice, TicketCount, ColumnId, FlightAmount;
-char Choice;
-string FlightNum, FlightName, Destination, FlightTime, FlightAvail, FlightFrom, FlightClass;
+int user_decision, FlightPrice, TicketCount, FlightAmount;
+char Choice, FlightTime;
+string FlightNum, FlightName, Destination, FlightFrom, FlightClass;
+
 struct Flight
 {
-	int ColumnId, FlightAmount;
-	string FlightNum, FlightName, Destination, FlightTime, FlightAvail, FlightFrom, FlightClass;
-	char Choice;
+	int ColumnId{}, FlightAmount{};
+	string FlightNum, FlightName, Destination, FlightFrom, FlightTime, FlightClass;
+	
 };
 void showMenu()
 {
@@ -54,7 +55,7 @@ void showAdminMenu()
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
-	cout << setw(70) << "|       [1] Display Passenger         |" << endl;
+	cout << setw(70) << "|       [1] Display Flight Record     |" << endl;
 	cout << setw(70) << "|       [2] Flight Details            |" << endl;
 	cout << setw(70) << "|       [3] Exit                      |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
@@ -91,81 +92,106 @@ void showBookFlights()
 	cout << setw(105) << "|                 [6]|   006       |  JP006       | 1800h   | Premium Eco. |  40,000 Php       |" << endl;
 	cout << setw(105) << "|--------------------------------------------------------------------------------------------- |" << endl;
 }
+//ADMIN VOID - FLIGHT DETAILS
 void ShowAddNewFlight(ofstream& write)
 {
 	Flight f1;
-	cout << "\n\tEnter Column ID: ";
-	cin >> f1.ColumnId;
 	cout << "Welcome To T.I.P. Airlines" << endl;
 	cout << "Add Flight Record" << endl;
+
+	cout << "\n\tEnter Column ID: ";
+	cin >> f1.ColumnId;
+
 	cout << "Enter Flight No.: ";
 	cin.get();
 	getline(cin, f1.FlightNum);
+
 	cout << "Enter Flight Name: ";
 	cin.get();
 	getline(cin, f1.FlightName);
+
 	cout << "Enter Flight From: ";
 	cin.get();
 	getline(cin, f1.FlightFrom);
-	cout << "Enter Flight DEstination: ";
+
+	cout << "Enter Flight Destination: ";
 	cin.get();
 	getline(cin, f1.Destination);
-	cout << "Enter Flight Time: ";
+
+	cout << "Enter Class: ";
 	cin.get();
-	getline(cin, f1.FlightTime);
+	getline(cin, f1.FlightClass);
+
+	cout << "Enter Flight Time: ";
+	cin >> f1.FlightTime;
+
 	cout << "Enter Amount: ";
 	cin >> f1.FlightAmount;
-		cout << "Enter Flight Availability (A (Available)/ N (Not Available)): ";
-	cin.get();
-	getline(cin, f1.FlightAvail);
+
 	cout << "Successfully added in database." << endl;
 	write << f1.ColumnId << endl
 		<< f1.FlightNum << endl
 		<< f1.FlightName << endl
-		<< f1.Destination << endl
-		<< f1.FlightTime << endl
-		<< f1.FlightAmount << endl
-		<< f1.FlightAvail << endl
 		<< f1.FlightFrom << endl
-		<< f1.FlightClass << endl;
+		<< f1.Destination << endl
+		<< f1.FlightClass << endl
+		<< f1.FlightTime << endl
+		<< f1.FlightAmount << endl;
+
+	cout << "Add another Flight? Y if yes / N if no: ";
+	cin >> Choice;
+	if (Choice == 'Y' || Choice == 'y') {
+		ShowAddNewFlight(write);
+		}
+	else if (Choice == 'N' || Choice == 'n') {
+		showAdminMenu();
+	}
+	else {
+		cout << "Invalid Choice";
+	}
 }
 Flight flightgetdata(ifstream& read)
 {
 	Flight obj;
 	read >> obj.ColumnId;
+
+	read.get();
+	getline(read, obj.FlightNum);
+
 	read.get();
 	getline(read, obj.FlightName);
-	cin.get();
-	getline(cin, obj.FlightName);
-	cin.get();
-	getline(cin, obj.FlightFrom);
-	cin.get();
-	getline(cin, obj.Destination);
-	cin.get();
-	getline(cin, obj.FlightTime);
-	cin.get();
-	read >> obj.FlightAmount;
+
 	read.get();
-	getline(cin, obj.FlightAvail);
-	cin.get();
-	getline(cin, obj.FlightClass);
+	getline(read, obj.FlightFrom);
+
+	read.get();
+	getline(read, obj.Destination);
+
+	read.get();
+	getline(read, obj.FlightClass);
+	read >> obj.FlightTime;
+	read >> obj.FlightAmount;
+
 	return obj;
 }
 void DisplayCustomerChoice(Flight f) {
-	cout << "Destination: " << f.Destination << endl;
-	cout << "Flight Number: " << f.FlightNum << endl;
-	cout << "Flight Name: " << f.FlightName << endl;
-	cout << "Flight Time: " << f.FlightTime << endl;
-	cout << "Flight Class: " << f.FlightClass << endl;
-	cout << "Flight Price:" << f.FlightAmount << endl;
+	cout << "\n\tDestination: " << f.Destination;
+	cout << "\n\tFlight Number: " << f.FlightNum;
+	cout << "\n\tFlight Name: " << f.FlightName;
+	cout << "\n\tFlight Time: " << f.FlightTime;
+	cout << "\n\tFlight Class: " << f.FlightClass;
+	cout << "\n\tFlight Price:" << f.FlightAmount <<endl;
 }
 void DisplayFlightRecord(Flight f)
 {
-	cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
-	cout << "| Column ID | Flight No. | Flight Name | From | Destination |  Class  | Time | Price | Flight Availabity |" << endl;
-	cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
-	cout << f.ColumnId << f.FlightNum << f.FlightName << f.FlightFrom << f.Destination << f.FlightClass << f.FlightTime << endl << f.FlightAmount;
-	cout << "|--------------------------------------------------------------------------------------------------------|" << endl;
+	cout << "\n\tColumn ID: " << f.ColumnId;
+	cout << "\n\tFlight No.: " << f.FlightNum;
+	cout << "\n\tFlight Name: " << f.FlightName;
+	cout << "\n\tFrom: " << f.FlightFrom;
+	cout << "\n\tDestination: " << f.Destination;
+	cout << "\n\tClass: " << f.FlightClass;
+	cout << "\n\tTime: " << f.FlightTime;
+	cout << "\n\tPrice: " << f.FlightAmount << " Php" << endl;
 }
 void showDeleteFlight(int ColumnId, ifstream& read)
 {
@@ -185,11 +211,10 @@ void showDeleteFlight(int ColumnId, ifstream& read)
 				<< f1.FlightNum << endl
 				<< f1.FlightName << endl
 				<< f1.Destination << endl
+				<< f1.FlightClass << endl
 				<< f1.FlightTime << endl
 				<< f1.FlightAmount << endl
-				<< f1.FlightAvail << endl
-				<< f1.FlightFrom << endl
-				<< f1.FlightClass;
+				<< f1.FlightFrom;
 		}
 		f1 = flightgetdata(read);
 	}
@@ -220,7 +245,6 @@ void showEditFlight(int ColumnId, ifstream& read)
 				<< f.Destination << endl
 				<< f.FlightTime << endl
 				<< f.FlightAmount << endl
-				<< f.FlightAvail << endl
 				<< f.FlightFrom << endl
 				<< f.FlightClass;
 		}
@@ -232,6 +256,7 @@ void showEditFlight(int ColumnId, ifstream& read)
 	remove("record.txt");
 	rename("temp1.txt", "record.txt");
 }
+//ADMIN VOID - FLIGHT DETAILS
 void printFlightDetails()
 {
 	cout << "Destination: " << Destination << endl;
@@ -256,9 +281,10 @@ void printCheckFlightDetails()
 int main()
 {
 	Flight f;
-	int ColumnId = 0;
+	int ColumnId =0;
 	ifstream read;
-	ofstream write;
+	read.open("record.txt", ios::in);
+	ofstream write("record.txt", ios::app);
 	string password = "";
 	string username = "";
 	showMenu();
@@ -313,32 +339,39 @@ int main()
 	else if (user_decision == 2)
 	{
 		//admin log in system-------------------------------
-	cout << setw(60) << "Login Admin Account" << endl;
-	cout << setw(55) << "Username: ";
-	cin >> username;
-	cout << endl;
-	cout << setw(55) << "Password: ";
-	cin >> password;
+		cout << setw(60) << "Login Admin Account" << endl;
+		cout << setw(55) << "Username: ";
+		cin >> username;
+		cout << endl;
+		cout << setw(55) << "Password: ";
+		cin >> password;
 
-	if (username == "admin" && password == "admin")
-	{
-		system("cls");
-		cout << setw(55) << "Log in sucessful" << endl
-			<< endl
-			<< endl;
-	}
-	else {
-		cout << "Invalid Username and Password" << endl << endl << endl;
-	}
-	//--------------------------------------------------p
+		if (username == "admin" && password == "admin")
+		{
+			system("cls");
+			cout << setw(55) << "Log in sucessful" << endl
+				<< endl
+				<< endl;
+		}
+		else {
+			cout << "Invalid Username and Password" << endl << endl << endl;
+		}
+		//--------------------------------------------------
 		system("cls");
 		showAdminMenu();
 		cout << setw(65) << "Enter your choice here: ";
 		cin >> user_decision;
 		if (user_decision == 1)
 		{
-			DisplayFlightRecord(f);
-		} //lala
+			ifstream read;
+			read.open("record.txt", ios::in);
+			Flight f1;
+			f1 = flightgetdata(read);
+			while (!read.eof()) {
+				DisplayFlightRecord(f1);
+				f1 = flightgetdata(read);
+			}
+		}
 		else if (user_decision == 2)
 		{
 			system("cls");
@@ -357,9 +390,13 @@ int main()
 			{
 				showEditFlight(ColumnId, read);
 			}
+			else if (user_decision == 4)
+			{
+				showAdminMenu();
+			}
 			else
 			{
-				cout << "Invalid choice.";
+				cout << "Invalid Choice...";
 			}
 		}
 
@@ -371,6 +408,6 @@ int main()
 		}
 		system("pause");
 		system("cls");
-		main();
+		return 0;
 	}
 }
