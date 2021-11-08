@@ -6,3 +6,12 @@ BICOL
 ECONOMIC
 10
 2000
+1
+2321
+ cebu pacific
+ manila
+ bohol
+ economic
+10:00am
+2000
+
