@@ -225,7 +225,7 @@ int main()
     {
         cout << "To check your flight please enter the email you provided: ";
         cin >> email_login;
-        if (email_login.compare(email)==0)
+        if (email_login.compare(email)==1)
         {
             Menu();
         }
