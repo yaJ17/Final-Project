@@ -73,7 +73,7 @@ float getCustomerPay()
         {
             change = balance - total;
             cout << "The reservation is succesful" << endl;
-            cout << "Your change is " << change;
+            cout << "Your change is " << change << endl;
         }
     }
     else
