@@ -4,7 +4,7 @@
 #include <iomanip>
 using namespace std;
 string destination, flightNum, flightName, timeDeparture, plane_class, email="", email_login="";
-int user_decision, price, total, ticketCount,userChoice;
+int user_decision, price, total, ticketCount,userChoice, seatAvailable;
 float change, input_money, balance;
 char option;
 void showMainMenu()
@@ -25,33 +25,18 @@ void showMainMenu()
 void showAvailableFlights()
 {
 
-	cout <<  "|---------------------------------------------------------------------------------------------------------|" << endl;
-	cout <<  "| Flight Destination | Flight No.  | Flight Name  | Time of Departure | Class        |Price               |" << endl;
-    cout <<  "|---------------------------------------------------------------------------------------------------------|" << endl;
-	cout <<  "|  South Korea    [1]|   001       |  SK001       | 0700h             | Economy      |  7,000 Php         |" << endl;
-	cout <<  "|                 [2]|   002       |  SK002       | 1300h             | Premium Eco. |  10,000 Php        |" << endl;
-	cout <<  "|---------------------------------------------------------------------------------------------------------|" << endl;
-	cout <<  "|  Hongkong       [3]|   003       |  HK003       | 0900h             | Economy      |  10,000 Php        |" << endl;
-	cout <<  "|                 [4]|   004       |  HK004       | 1500h             | Premium Eco. |  14,000 Php        |" << endl;
-	cout <<  "|---------------------------------------------------------------------------------------------------------|" << endl;
-	cout <<  "|  Japan          [5]|   005       |  JPN005       | 1000h             | Economy      |  20,000 Php        |" << endl;
-	cout <<  "|                 [6]|   006       |  JPN006       | 1800h             | Premium Eco. |  30,000 Php        |" << endl;
-    cout <<  "|---------------------------------------------------------------------------------------------------------|" << endl;
-}
-void showChosenFlight()
-{
-    cout << "To confirm your choice " << endl;
-    cout << "You choose " << "[" << user_decision <<"]" << endl;
-    cout << "Destination: " << destination << endl;
-    cout << "Flight Number: " << flightNum << endl;
-    cout << "Flight Name: " << flightName << endl;
-    cout << "Time of Departure: " << timeDeparture << endl;
-    cout << "Class: " << plane_class << endl;
-    cout << "Price: " << price << endl;
-    cout << "How many tickets you would to buy? :";
-    cin >> ticketCount;
-    total = price * ticketCount;
-    cout << "The total amount is: " << total << endl << endl << endl;
+	cout <<  "|----------------------------------------------------------------------------------------------------------------------|" << endl;
+	cout <<  "| Flight Destination | Flight No.  | Flight Name  | Time of Departure | Class        |Price           |Seat Available  |" << endl;
+    cout <<  "|----------------------------------------------------------------------------------------------------------------------|" << endl;
+	cout <<  "|  South Korea    [1]|   001       |  SK001       | 0700h             | Economy      |  7,000 Php     |       0        |" << endl;
+	cout <<  "|                 [2]|   002       |  SK002       | 1300h             | Premium Eco. |  10,000 Php    |       15       |" << endl;
+	cout <<  "|----------------------------------------------------------------------------------------------------------------------|" << endl;
+	cout <<  "|  Hongkong       [3]|   003       |  HK003       | 0900h             | Economy      |  10,000 Php    |       8        |" << endl;
+	cout <<  "|                 [4]|   004       |  HK004       | 1500h             | Premium Eco. |  14,000 Php    |       24       |" << endl;
+	cout <<  "|----------------------------------------------------------------------------------------------------------------------|" << endl;
+	cout <<  "|  Japan          [5]|   005       |  JPN005       | 1000h            | Economy      |  20,000 Php    |       7        |" << endl;
+	cout <<  "|                 [6]|   006       |  JPN006       | 1800h            | Premium Eco. |  30,000 Php    |       13       |" << endl;
+    cout <<  "|----------------------------------------------------------------------------------------------------------------------|" << endl;
 }
 void displayFlight()
 {
@@ -106,6 +91,33 @@ int getEmail()
         return userChoice;
 
 }
+void showChosenFlight()
+{
+    cout << "To confirm your choice " << endl;
+    cout << "You choose " << "[" << user_decision <<"]" << endl;
+    cout << "Destination: " << destination << endl;
+    cout << "Flight Number: " << flightNum << endl;
+    cout << "Flight Name: " << flightName << endl;
+    cout << "Time of Departure: " << timeDeparture << endl;
+    cout << "Class: " << plane_class << endl;
+    cout << "Price: " << price << endl;
+    cout << "How many tickets you would to buy? :";
+    cin >> ticketCount;
+    if (ticketCount <= seatAvailable)
+    {
+        total = price * ticketCount;
+        cout << "The total amount is: " << total << endl << endl << endl;
+        getEmail();
+        getCustomerPay();
+    }
+    else
+    {
+        cout << "We only have " << seatAvailable <<  " seat left" << endl;
+        system("pause");
+        system("cls");
+    }
+
+}
 void Menu()
 {
      system("cls");
@@ -120,6 +132,7 @@ void Menu()
             timeDeparture ="0700h";
             plane_class = "Economy";
             price = 7000;
+            seatAvailable = 0;
             showChosenFlight();
             user_decision = userChoice;
         }
@@ -131,6 +144,7 @@ void Menu()
             timeDeparture ="1300h";
             plane_class = "Premium Economy";
             price = 10000;
+            seatAvailable = 15;
             showChosenFlight();
             user_decision = userChoice;
         }
@@ -142,6 +156,7 @@ void Menu()
             timeDeparture ="0900h";
             plane_class = "Economy";
             price = 10000;
+            seatAvailable = 8;
             showChosenFlight();
             user_decision = userChoice;
         }
@@ -153,6 +168,7 @@ void Menu()
             timeDeparture ="1500h";
             plane_class = "Premium Economy";
             price = 14000;
+            seatAvailable = 24;
             showChosenFlight();
             user_decision = userChoice;
         }
@@ -164,6 +180,7 @@ void Menu()
             timeDeparture ="1000h";
             plane_class = "Economy";
             price = 20000;
+            seatAvailable = 7;
             showChosenFlight();
             user_decision = userChoice;
         }else if (user_decision == 6)
@@ -174,11 +191,10 @@ void Menu()
             timeDeparture ="1800h";
             plane_class = "Premium Economy";
             price = 30000;
+            seatAvailable = 13;
             showChosenFlight();
             user_decision = userChoice;
         }
-        getEmail();
-        getCustomerPay();
 }
 int main()
 {
