@@ -6,7 +6,7 @@ using namespace std;
 string destination, flightNum, flightName, timeDeparture, plane_class, email="", email_login="";
 int user_decision, price, total, ticketCount,userChoice;
 float change, input_money, balance;
-
+char option;
 void showMainMenu()
 {
     cout << "|------------------------------------|" << endl;
@@ -106,14 +106,9 @@ int getEmail()
         return userChoice;
 
 }
-int main()
+void Menu()
 {
-    showMainMenu();
-    cout << "Enter your choice here: (Example Input '1') " ;
-    cin >> user_decision;
-    if (user_decision == 1)
-    {
-        system("cls");
+     system("cls");
         showAvailableFlights();
         cout << "Enter your choice here: (Example Input '1') " ;
         cin >> user_decision;
@@ -184,6 +179,17 @@ int main()
         }
         getEmail();
         getCustomerPay();
+}
+int main()
+{
+    showMainMenu();
+    cout << "Enter your choice here: (Example Input '1') " ;
+    cin >> user_decision;
+    if (user_decision == 1)
+    {
+        system("cls");
+        showAvailableFlights();
+        Menu();
     }
     else if (user_decision ==2)
     {
@@ -201,7 +207,12 @@ int main()
     }
     else if(user_decision == 3)
     {
-        //Change flight
+        cout << "To check your flight please enter the email you provided: ";
+        cin >> email_login;
+        if (email_login.compare(email))
+        {
+            Menu();
+        }
     }
     else
     {
