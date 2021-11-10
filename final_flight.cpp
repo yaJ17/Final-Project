@@ -116,11 +116,16 @@ void showChosenFlight()
         getEmail();
         getCustomerPay();
     }
-    else
+    else if (ticketCount > seatAvailable)
     {
         cout << "We only have " << seatAvailable <<  " seat left" << endl;
         system("pause");
         system("cls");
+    }
+    else
+    {
+        cout << endl;
+        cout << "Invalid Input, the program will exit " << endl << endl;
     }
 
 }
@@ -201,6 +206,12 @@ void Menu()
             showChosenFlight();
             user_decision = userChoice;
         }
+        else
+        {
+
+            cout << "Invalid Input, the program will exit" << endl;
+            exit(0);
+        }
 }
 int main()
 {
@@ -244,9 +255,14 @@ int main()
             main();
         }
     }
-    else
+    else if (user_decision == 4)
     {
         //exit
+        exit(0);
+    }
+    else
+    {
+        cout << "Invalid Input, the program will exit";
         exit(0);
     }
     system("cls");
