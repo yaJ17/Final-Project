@@ -233,6 +233,7 @@ int main()
         cin >> email_login;
         if (email_login.compare(email)==1)
         {
+            cout << "Hello ";
             Menu();
         }
         else
@@ -248,7 +249,6 @@ int main()
         //exit
         exit(0);
     }
-    system("pause");
     system("cls");
     main();
 }
