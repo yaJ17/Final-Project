@@ -109,7 +109,7 @@ void showChosenFlight()
     cout << "Price: " << price << endl;
     cout << "How many tickets you would to buy? :";
     cin >> ticketCount;
-    if (ticketCount <= seatAvailable)
+    if (ticketCount <= seatAvailable && ticketCount >0)
     {
         total = price * ticketCount;
         cout << "The total amount is: " << total << endl << endl << endl;
