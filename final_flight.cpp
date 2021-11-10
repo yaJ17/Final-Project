@@ -55,7 +55,7 @@ float getCustomerPay()
     cin >> input_money;
     if (input_money < 0)
     {
-        cout << "You can't add negative value";
+        cout << "You can't add negative value" << endl;
         system("pause");
         getCustomerPay();
     }
