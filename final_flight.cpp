@@ -53,7 +53,13 @@ float getCustomerPay()
     cout << "The total is: " << total << endl;
     cout << "Enter your money here: ";
     cin >> input_money;
-    if (input_money >= total)
+    if (input_money < 0)
+    {
+        cout << "You can't add negative value";
+        system("pause");
+        getCustomerPay();
+    }
+    else if (input_money >0 && input_money >= total)
     {
         change = input_money - total;
         cout << "The reservation is succesful" << endl;
