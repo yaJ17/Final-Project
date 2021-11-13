@@ -60,9 +60,8 @@ void showAdminMenu()
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
-	cout << setw(70) << "|       [1] Search Flight Record     |" << endl;
-	cout << setw(70) << "|       [2] Flight Details            |" << endl;
-	cout << setw(70) << "|       [3] Exit                      |" << endl;
+	cout << setw(70) << "|       [1] Flight Details            |" << endl;
+	cout << setw(70) << "|       [2] Exit                      |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|                                     |" << endl;
 	cout << setw(70) << "|-------------------------------------|" << endl;
