@@ -120,7 +120,13 @@ void showChosenFlight()
     cout << "Price: " << price << endl;
     cout << "How many tickets you would to buy? :";
     cin >> ticketCount;
-    if (ticketCount <= seatAvailable)
+    if (ticketCount <0)
+    {
+        cout << "You cannot input negative value." << endl;
+        system("pause");
+        showChosenFlight();
+    }
+    else if (ticketCount <= seatAvailable)
     {
         total = price * ticketCount;
         cout << "The total amount is: " << total << endl << endl << endl;
