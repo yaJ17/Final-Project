@@ -5,7 +5,7 @@
 using namespace std;
 string destination, flightNum, flightName, timeDeparture, plane_class, email="", email_login="";
 int user_decision, price, total, ticketCount,userChoice, seatAvailable;
-float change, input_money, balance;
+float change, input_money, balance=0, discount;
 char option;
 void showMainMenu()
 {
@@ -53,27 +53,44 @@ float getCustomerPay()
     cout << "The total is: " << total << endl;
     cout << "Enter your money here: ";
     cin >> input_money;
-    if (input_money >= total)
+    if (input_money < 0)
     {
-        change = input_money - total;
-        cout << "The reservation is succesful" << endl;
-        cout << "Your change is " << change << endl;
+        cout << "You cannot input negative value." << endl;
+        system("pause");
+        getCustomerPay();
     }
-    else if (input_money < total)
+    else if(input_money > 0)
     {
-        balance = total - input_money;
-        while(balance < total)
+        if (input_money >= total)
         {
-            cout << "You still have " << balance << endl;
-            cout << "Enter your money here: ";
-            cin >> balance;
-            balance = balance + input_money;
-        }
-        if (balance >= total)
-        {
-            change = balance - total;
+            change = input_money - total;
             cout << "The reservation is succesful" << endl;
-            cout << "Your change is " << change;
+            cout << "Your change is " << change << endl;
+        }
+        else if (input_money < total)
+        {
+            balance = total - input_money;
+            while (total > balance && balance!=0 && balance >0)
+            {
+                cout << "You still have " << balance << " to pay" <<  endl;
+                cout << "Input your money here: ";
+                cin >> input_money;
+                balance = balance - input_money;
+                input_money+= input_money;
+            }
+            if ( balance <0 || balance ==0)
+            {
+                if (balance ==0)
+                {
+                    cout << "The reservation is succesful" << endl;
+                }
+                else
+                {
+                change = total - input_money;
+                cout << "The reservation is succesful" << endl;
+                cout << "Your change is " << change << endl;
+                }
+            }
         }
     }
     else
@@ -108,7 +125,25 @@ void showChosenFlight()
         total = price * ticketCount;
         cout << "The total amount is: " << total << endl << endl << endl;
         getEmail();
-        getCustomerPay();
+        cout << "To avail the discounted price for PWD/Senior Citizen press [1] if not press [2]" << endl;
+        cin >> user_decision;
+        if (user_decision ==1)
+        {
+            discount = total * .20;
+            total = total - discount;
+            getCustomerPay();
+        }
+        else if (user_decision ==2)
+        {
+            getCustomerPay();
+        }
+        else
+        {
+            cout << "Invalid Input." << endl;
+            system("pause");
+            showChosenFlight();
+        }
+
     }
     else
     {
