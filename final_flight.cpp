@@ -53,13 +53,7 @@ float getCustomerPay()
     cout << "The total is: " << total << endl;
     cout << "Enter your money here: ";
     cin >> input_money;
-    if (input_money < 0)
-    {
-        cout << "You can't add negative value" << endl;
-        system("pause");
-        getCustomerPay();
-    }
-    else if (input_money >0 && input_money >= total)
+    if (input_money >= total)
     {
         change = input_money - total;
         cout << "The reservation is succesful" << endl;
@@ -79,7 +73,7 @@ float getCustomerPay()
         {
             change = balance - total;
             cout << "The reservation is succesful" << endl;
-            cout << "Your change is " << change << endl;
+            cout << "Your change is " << change;
         }
     }
     else
@@ -109,23 +103,18 @@ void showChosenFlight()
     cout << "Price: " << price << endl;
     cout << "How many tickets you would to buy? :";
     cin >> ticketCount;
-    if (ticketCount <= seatAvailable && ticketCount >0)
+    if (ticketCount <= seatAvailable)
     {
         total = price * ticketCount;
         cout << "The total amount is: " << total << endl << endl << endl;
         getEmail();
         getCustomerPay();
     }
-    else if (ticketCount > seatAvailable)
+    else
     {
         cout << "We only have " << seatAvailable <<  " seat left" << endl;
         system("pause");
         system("cls");
-    }
-    else
-    {
-        cout << endl;
-        cout << "Invalid Input, the program will exit " << endl << endl;
     }
 
 }
@@ -206,12 +195,6 @@ void Menu()
             showChosenFlight();
             user_decision = userChoice;
         }
-        else
-        {
-
-            cout << "Invalid Input, the program will exit" << endl;
-            exit(0);
-        }
 }
 int main()
 {
@@ -242,29 +225,17 @@ int main()
     {
         cout << "To check your flight please enter the email you provided: ";
         cin >> email_login;
-        if (email_login.compare(email)==1)
+        if (email_login.compare(email))
         {
-            cout << "Hello ";
             Menu();
         }
-        else
-        {
-            cout << "Invalid Log in " << endl;
-            system("pause");
-            system("cls");
-            main();
-        }
     }
-    else if (user_decision == 4)
+    else
     {
         //exit
         exit(0);
     }
-    else
-    {
-        cout << "Invalid Input, the program will exit";
-        exit(0);
-    }
+    system("pause");
     system("cls");
     main();
 }
