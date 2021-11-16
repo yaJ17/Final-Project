@@ -4,7 +4,7 @@
 #include <iomanip>
 using namespace std;
 string destination, flightNum, flightName, timeDeparture, plane_class, email="", email_login="";
-int user_decision, price, total, ticketCount,userChoice, seatAvailable;
+int user_decision, price, total, ticketCount,userChoice, seatAvailable, nDiscount;
 float change, input_money, balance=0, discount;
 char option;
 void showMainMenu()
@@ -135,9 +135,22 @@ void showChosenFlight()
         cin >> user_decision;
         if (user_decision ==1)
         {
-            discount = total * .20;
-            total = total - discount;
-            getCustomerPay();
+            cout << "Enter the number of PWDs/Senior Citizen: ";
+            cin >> nDiscount;
+            if (nDiscount > 0)
+            {
+                ticketCount -= nDiscount;
+                discount = nDiscount * (price * 0.2);
+                total -= discount;
+                getCustomerPay();
+            }
+            else
+            {
+                cout << "You cannot input negative value" << endl;
+                system("pause");
+                showChosenFlight();
+            }
+
         }
         else if (user_decision ==2)
         {
