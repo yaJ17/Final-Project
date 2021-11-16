@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\flight"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp",
+			"istream": "cpp",
+			"iosfwd": "cpp",
+			"sstream": "cpp",
+			"xiosbase": "cpp",
+			"xstring": "cpp",
+			"xlocale": "cpp",
+			"xlocmon": "cpp",
+			"xlocnum": "cpp",
+			"xloctime": "cpp"
+		}
+	}
+}
